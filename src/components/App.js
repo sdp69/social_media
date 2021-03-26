@@ -2,8 +2,9 @@ import '../App.css';
 import {connect} from'react-redux'
 import React, {Component} from 'react';
 import {fetchPosts} from "../actions/posts";
-import {PostLists} from "./index";
+import {Home, Navbar,comp404} from "./index";
 import PropTypes from 'prop-types';
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom"; //npm -i react-router-dom
 
 
 class App extends Component {
@@ -16,40 +17,17 @@ class App extends Component {
         console.log(`App store:`, this.props);
         const {posts} = this.props;
         return (
-            <div>
-                <nav className="nav">
-                    <div className="left-div">
-                        <img src="https://ninjasfiles.s3.amazonaws.com/0000000000003454.png" alt="logo"/>
-                    </div>
-                    <div className="search-container">
-                        <img src="https://img.icons8.com/pastel-glyph/64/000000/search-account.png" className="search-icon"/>
-                        <input placeholder="search"/>
-                        <div className="search-results">
-                            <ul>
-                                <li className="search-results-row">
-                                    <img src="https://img.icons8.com/pastel-glyph/64/000000/user-male--v1.png" alt="user-dp"/>
-                                    <span>John Doe</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="right-nav">
-                        <div className="user">
-                            <img src="https://img.icons8.com/pastel-glyph/64/000000/user-male--v1.png" alt="user-dp"
-                            id="user-dp"/>
-                            <span>John Doe</span>
-                        </div>
-                        <div className="nav-links">
-                            <ul>
-                                <li>Log in</li>
-                                <li>Log out</li>
-                                <li>Register</li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                <PostLists posts={posts}/>
-            </div>
+            <Router>
+                <div>
+                    <Navbar/>
+                    <Switch>
+                        <Route exact path="/" render={(props) => {
+                            return <Home {...props} posts={posts}/>
+                        }}></Route>
+                        <Route component={comp404}></Route>
+                    </Switch>
+                </div>
+            </Router>
         );
     }
 }

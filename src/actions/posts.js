@@ -1,4 +1,3 @@
-import {logger} from "redux-logger/src";
 import axios from "axios";
 import {UPDATE_POSTS} from './types'
 

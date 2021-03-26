@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import connect from "react-redux/lib/connect/connect";
 import PropTypes from 'prop-types';
 
 
@@ -14,7 +13,7 @@ class PostLists extends Component {
                         <div className="post-wrapper" key={post.id}>
                             <div className="post-header">
                                 <div className="post-avatar">
-                                    <img src="https://img.icons8.com/pastel-glyph/64/000000/user-male--v1.png"/>
+                                    <img src={post.image} alt="avatar"/>
                                     <div><span className="post-author">{post.owner.firstName +" "+post.owner.lastName}</span>
                                         <span className="post-time">{post.publishDate}</span>
                                     </div>
@@ -22,11 +21,11 @@ class PostLists extends Component {
                                 <div className="post-content">{post.text}</div>
                                 <div className="post-actions">
                                     <div className="post-like">
-                                        <img src="https://img.icons8.com/pastel-glyph/64/000000/facebook-like--v1.png"/>
+                                        <img src="https://img.icons8.com/pastel-glyph/64/000000/facebook-like--v1.png" alt="like button"/>
                                         <span>{post.likes}</span>
                                     </div>
                                     <div className="post-comments-icon">
-                                        <img src="https://img.icons8.com/nolan/96/topic.png"/>
+                                        <img src="https://img.icons8.com/nolan/96/topic.png" alt="comment-icon"/>
                                         <span>12</span>
                                     </div>
                                 </div>
